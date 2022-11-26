@@ -63,16 +63,22 @@
     font-size:30px;
   }
 
-  #followers {
-    display: flex;
-  }
 
-  .increment {
-    padding-top: 30px;
+#count {
+  display: flex;
+  margin-top: 40px;
+}
+
+
+
+  #likes {
     padding-left: 20px;
   }
 
-  .decrement {
-padding-top: 30px;  
+  #dislike {
 padding-left: 40px;
+}
+
+.hide {
+  display: none;
 }

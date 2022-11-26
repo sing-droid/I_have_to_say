@@ -1,16 +1,52 @@
-const comment = document.getElementById("input");
+
+const comment =  document.querySelectorAll("#comments");
+const input = document.getElementById("input");
 const save = document.getElementById("button");
-const desc = document.getElementById("description");
-const container = document.getElementById("comment");
-const arr = [];
-var html = '';
+const likePic = document.querySelectorAll("#thumbs-up");
+const dislikePic = document.querySelectorAll("#thumbs-down");
+const like = document.querySelectorAll("#likes");
+const disLike = document.querySelectorAll("#dislike");
+const remove = document.querySelectorAll("#delete");
+const description = document.querySelectorAll("#description");
+
+var i = 0;
+
 save.addEventListener("click",() => {
-    arr.push(comment.value);
-    html += '<div id = "comments"><p id="description">'+comment.value+'</p>'+
-    '<div id="followers"><p class="increment">0</p><p class="decrement">0</p></div>'+
-    '<div id="icons"><img src="https://cdn-icons-png.flaticon.com/512/25/25297.png" id="thumbs-up"/>'+
-    '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Font_Awesome_5_regular_thumbs-down.svg/2048px-Font_Awesome_5_regular_thumbs-down.svg.png" id="thumbs-down"/>'+
-    '<img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" id="delete"/></div></div>'
-container.innerHTML = html;
-comment.value = '';
+let commentValue = input.value;
+description[i].innerText = commentValue;
+comment[i].classList.remove("hide");
+input.value = "";
+i++;
 });
+
+remove.forEach((item,index)=>{
+    item.addEventListener("click",()=> {
+        comment[index].classList.add("hide");
+
+    })
+});
+
+likePic.forEach((item,index)=>{
+    item.addEventListener("click",()=>{
+        increment(index);
+    })
+});
+
+function increment(index){
+let likes = parseInt(like[index].innerText)+1; 
+like[index].innerText = likes;
+};
+
+dislikePic.forEach((item,index)=>{
+    item.addEventListener("click",()=>{
+        decrement(index);
+    })
+});
+
+
+function decrement(index){
+    let dislikes = parseInt(disLike[index].innerText)+1;
+    disLike[index].innerText = dislikes;
+}
+
+
